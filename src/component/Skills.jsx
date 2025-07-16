@@ -8,7 +8,7 @@ import {
   ChevronUp,
 } from "lucide-react";
 import firebaseImg from "../assets/skills/firebase.png";
-import podmanImg from "../assets/skills/podman.png";
+import podmanImg from "../assets/skills/Podman.png";
 import "./Skills.css";
 
 const skillIconMap = {
