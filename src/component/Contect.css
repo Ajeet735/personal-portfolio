@@ -1,0 +1,180 @@
+/* === Contact.css === */
+
+.contact {
+  padding: 4rem 0;
+  background: #ffffff;
+  color: #1f2937;
+}
+
+.contact.dark {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contact-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.contact-header .underline {
+  width: 4rem;
+  height: 0.25rem;
+  background: #2563eb;
+  margin: 0.5rem auto;
+  border-radius: 9999px;
+}
+
+.contact.dark .underline {
+  background: #3b82f6;
+}
+
+.contact-header p {
+  max-width: 800px;
+  margin: 1rem auto 0;
+  font-size: 1.5rem;
+  color:#4B5563;
+  font-weight: 500;
+  line-height: 1.2rem;
+}
+
+.contact.dark .contact-header p {
+  color: #d1d5db;
+}
+
+.social-links {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.social-links h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #2563eb;
+}
+
+.contact.dark .social-links h3 {
+  color: #3b82f6;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  color: #ffffff; /* icon stays white */
+}
+
+.social-icons a.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.social-icons a.twitter {
+  background: #1DA1F2;
+}
+
+.social-icons a.linkedin {
+  background: #0077B5;
+}
+
+.social-icons a.github {
+  background: #333;
+}
+
+.social-icons a.mail {
+  background: #EA4335; /* Gmail red */
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+  opacity: 0.9; /* optional: subtle dim */
+}
+
+/* Grid container for all contact cards */
+.contact-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .contact-cards {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Each contact card */
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  height: 180px; /* set a fixed height for equal sizing */
+  padding: 1rem; /* smaller padding than before */
+background: #f0f6ff;   /* 👈 soft blue */
+  border: 1px solid #e5e7eb; /* 👈 subtle border */
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact.dark .contact-card {
+  background: #b9c8f5;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Icon + title in same row */
+.contact-card .icon-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* space between icon and text */
+}
+
+/* Icon styling */
+.contact-card .icon {
+  font-size: 1.75rem; /* adjust size if needed */
+}
+
+/* Title styling */
+.contact-card h4 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* Text link or paragraph inside card */
+.contact-card a,
+.contact-card p {
+    color: #2563eb; /* your accent blue */
+  margin: 0.5rem 0 0;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}

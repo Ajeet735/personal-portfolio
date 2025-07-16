@@ -1,0 +1,157 @@
+/* === Experience.css === */
+
+.experience-section {
+  padding: 4rem 0;
+  background-color: #FFFFFF;
+  color: #1f2937;
+}
+
+.experience-section.dark {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.experience-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.experience-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.experience-header .underline {
+  width: 4rem;
+  height: 0.25rem;
+  background-color: #2563eb;
+  margin: 0.5rem auto 0;
+  border-radius: 9999px;
+}
+
+.experience-section.dark .experience-header .underline {
+  background-color: #3b82f6;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.experience-card {
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 4px #f3f4f6;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+
+.experience-section.dark .experience-card {
+  background-color: #1f2937;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+}
+
+.experience-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.experience-top h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.experience-section.dark .experience-top h3 {
+  color: #60a5fa;
+}
+
+.experience-top h4 {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.experience-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.experience-section.dark .experience-meta {
+  color: #d1d5db;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.experience-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.experience-points .bullet {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex-shrink: 0;
+  background-color: #2563eb;
+  border-radius: 50%;
+  margin-top: 0.4rem;
+}
+
+.experience-section.dark .experience-points .bullet {
+  background-color: #60a5fa;
+}
+
+/* Credential link */
+.credential-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.credential-link:hover {
+  text-decoration: underline;
+}
+
+.experience-section.dark .credential-link {
+  color: #60a5fa;
+}
+
+/* Divider after each card */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #e5e7eb;
+  margin-top: 1.5rem;
+}
+
+.experience-section.dark .divider {
+  background-color: #374151;
+}
