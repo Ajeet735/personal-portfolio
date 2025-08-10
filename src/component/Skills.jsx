@@ -7,10 +7,14 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import firebaseImg from "../assets/skills/firebase.png";
-import podmanImg from "../assets/skills/Podman.png";
 import "./Skills.css";
 
+// Import local icons
+import neonIcon from "../assets/skills/neon.png";
+import clerkIcon from "../assets/skills/clerk.svg";
+import n8nIcon from "../assets/skills/n8n.svg";
+
+// Map skill titles to either skillicons.dev identifiers or local asset paths
 const skillIconMap = {
   "C++": "cpp",
   C: "c",
@@ -19,7 +23,7 @@ const skillIconMap = {
   JavaScript: "javascript",
   TypeScript: "typescript",
   Nodejs: "nodejs",
-  mySQL: "mysql",
+  MySQL: "mysql",
   MongoDB: "mongodb",
   React: "react",
   TailwindCSS: "tailwindcss",
@@ -29,10 +33,36 @@ const skillIconMap = {
   GitHub: "github",
   Vercel: "vercel",
   Postman: "postman",
+  Express: "express",
+  PostgreSQL: "postgresql",
+  Prisma: "prisma",
+  SQL: "sqlite",
+  Neon: neonIcon,   // Local PNG
+  Clerk: clerkIcon, // Local SVG
+  n8n: n8nIcon,     // Local SVG
+  Firebase: "firebase",
 };
 
-const getSkillIconUrl = (skill) =>
-  `https://skillicons.dev/icons?i=${skillIconMap[skill] || skill.toLowerCase()}`;
+// Determine correct icon source URL
+const getSkillIconUrl = (skill) => {
+  const icon = skillIconMap[skill];
+
+  // If it's a local asset (Webpack/Vite import), return it directly
+  if (
+    typeof icon === "string" &&
+    (icon.includes("/assets/") || icon.endsWith(".svg") || icon.endsWith(".png"))
+  ) {
+    return icon;
+  }
+
+  // If mapped to a skillicons.dev identifier
+  if (typeof icon === "string") {
+    return `https://skillicons.dev/icons?i=${icon}`;
+  }
+
+  // Fallback: use skill title (lowercased)
+  return `https://skillicons.dev/icons?i=${skill.toLowerCase()}`;
+};
 
 const skillsData = {
   frontend: [
@@ -46,18 +76,23 @@ const skillsData = {
     { id: 6, title: "Nodejs", proficiency: 80 },
     { id: 7, title: "Express", proficiency: 75 },
     { id: 8, title: "MongoDB", proficiency: 80 },
-    { id: 9, title: "mySQL", proficiency: 70 },
+    { id: 9, title: "MySQL", proficiency: 70 },
+    { id: 22, title: "PostgreSQL", proficiency: 75 },
+    { id: 23, title: "Neon", proficiency: 70 },
+    { id: 26, title: "Prisma", proficiency: 80 },
+    { id: 27, title: "SQL", proficiency: 75 },
   ],
   tools: [
     { id: 10, title: "GitHub", proficiency: 85 },
     { id: 11, title: "Vercel", proficiency: 80 },
     { id: 12, title: "Postman", proficiency: 85 },
-    { id: 13, title: "Firebase", imageSrc: firebaseImg, proficiency: 75 },
+    { id: 13, title: "Firebase", proficiency: 75 },
+    { id: 24, title: "Clerk", proficiency: 80 },
+    { id: 25, title: "n8n", proficiency: 70 },
   ],
   devops: [
     { id: 14, title: "Docker", proficiency: 70 },
     { id: 15, title: "Kubernetes", proficiency: 60 },
-    { id: 16, title: "Podman", imageSrc: podmanImg, proficiency: 60 },
   ],
   programmingLanguages: [
     { id: 17, title: "Python", proficiency: 85 },
@@ -86,45 +121,39 @@ export default function Skills() {
   const [activeTab, setActiveTab] = useState("all");
 
   useEffect(() => {
-    const isDark = document.body.classList.contains("dark");
-    setIsDarkMode(isDark);
-    const observer = new MutationObserver(() =>
-      setIsDarkMode(document.body.classList.contains("dark"))
-    );
+    const checkDark = () => setIsDarkMode(document.body.classList.contains("dark"));
+    checkDark();
+    const observer = new MutationObserver(checkDark);
     observer.observe(document.body, { attributes: true });
     return () => observer.disconnect();
   }, []);
 
-  const toggle = (key) => {
-    setExpanded((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
+  const toggle = (key) => setExpanded((prev) => ({ ...prev, [key]: !prev[key] }));
 
   const visibleCategories =
-    activeTab === "all"
-      ? categories
-      : categories.filter((cat) => cat.key === activeTab);
+    activeTab === "all" ? categories : categories.filter((c) => c.key === activeTab);
 
   return (
     <section id="skills" className={`skills-section ${isDarkMode ? "dark" : ""}`}>
       <div className="container">
         <div className="skills-header">
           <h2>SKILLS</h2>
-          <div className="underline"></div>
-          <p style={{color:"#4B5563", fontSize:"1.5rem", fontWeight: "500"}}>My technical skills and tools that I use to bring ideas to life.</p>
+          <div className="underline" />
+          <p style={{ color: "#4B5563", fontSize: "1.5rem", fontWeight: 500 }}>
+            My technical skills and tools that I use to bring ideas to life.
+          </p>
         </div>
 
         <div className="skills-tabs">
-          {[{ key: "all", label: "All Skills" }, ...categories].map(
-            ({ key, label, icon }) => (
-              <button
-                key={key}
-                onClick={() => setActiveTab(key)}
-                className={`tab-btn ${activeTab === key ? "active" : ""}`}
-              >
-                {icon} {label}
-              </button>
-            )
-          )}
+          {[{ key: "all", label: "All Skills" }, ...categories].map(({ key, label, icon }) => (
+            <button
+              key={key}
+              onClick={() => setActiveTab(key)}
+              className={`tab-btn ${activeTab === key ? "active" : ""}`}
+            >
+              {icon} {label}
+            </button>
+          ))}
         </div>
 
         <div className="skills-grid">
@@ -138,17 +167,14 @@ export default function Skills() {
                 <div className="skills-list">
                   {skillsData[key].map((skill) => (
                     <div key={skill.id} className="skill-item">
-                      <img
-                        src={skill.imageSrc || getSkillIconUrl(skill.title)}
-                        alt={skill.title}
-                      />
+                      <img src={getSkillIconUrl(skill.title)} alt={skill.title} />
                       <div className="skill-info">
                         <p>{skill.title}</p>
                         <div className="progress-bar">
                           <div
                             className="progress"
                             style={{ width: `${skill.proficiency}%` }}
-                          ></div>
+                          />
                         </div>
                       </div>
                     </div>

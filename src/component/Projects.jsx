@@ -9,7 +9,7 @@ const project = [
     imageSrc: "/images/jobportal.png",
     description: "Website made with frontend and backend.",
     source: "https://github.com/Ajeet735/job_portal",
-    demo: "#",
+    demo: "https://github.com/Ajeet735/job_portal",
     tags: ["React", "Node.js", "MongoDB", ],
   },
   {
@@ -18,7 +18,7 @@ const project = [
     imageSrc: "/images/EasyCart.png",
     description: "Full frontend and backend project.",
     source: "https://github.com/Ajeet735/EasyCart",
-    demo: "#",
+    demo: "https://github.com/Ajeet735/EasyCart",
     tags: ["React", "Node.js", "MongoDB","Go"],
   },
   {
@@ -27,8 +27,35 @@ const project = [
     imageSrc: "/images/codeEditor.png",
     description: "Complete React JS project.",
     source: "https://github.com/Ajeet735/code-editor",
-    demo: "#",
+    demo: "https://github.com/Ajeet735/code-editor",
     tags: ["Typescript", "API", "CSS"],
+  },
+  {
+    id: 4,
+    title: "Expense tracker",
+    imageSrc: "/images/ExpenseTracker.png",
+    description: "Complete Next.JS project.",
+    source: "https://github.com/Ajeet735/expense-tracker",
+    demo: "https://github.com/Ajeet735/expense-tracker",
+    tags: ["Typescript", "Next.js", "Postgresql"],
+  },
+  {
+    id: 4,
+    title: "Array Bankist",
+    imageSrc: "/images/ArrayBankist.png",
+    description: "Complete Javascript project.",
+    source: "https://github.com/Ajeet735/Array-Bankist",
+    demo: "https://github.com/Ajeet735/Array-Bankist",
+    tags: ["Javascript", "HTML", "CSS"],
+  },
+  {
+    id: 4,
+    title: "Pig Game",
+    imageSrc: "/images/PigGame.png",
+    description: "Complete Javascript project.",
+    source: "https://github.com/Ajeet735/Pig-game",
+    demo: "https://github.com/Ajeet735/Pig-game",
+    tags: ["Javascript", "HTML", "CSS"],
   }
 ]
 const Projects = () => {

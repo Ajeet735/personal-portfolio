@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import hero from "../assets/hero/hero.jpg";
+import hero from "../assets/hero/my image profile.jpg";
 import Typed from "typed.js";
 import { FileDown, Github, Linkedin, Twitter } from "lucide-react";
 import "./Home.css"; // ✅ Import your CSS
